@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WitBird.Sex.Model", "WitBird.Sex.Model\WitBird.Sex.Model.csproj", "{642BD2F6-733C-4151-AE70-1C7EF79E0036}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WitBird.Sex.DAL", "WitBird.Sex.DAL\WitBird.Sex.DAL.csproj", "{7110DAED-3C44-42A0-B245-0B7375FBB466}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WitBird.Sex.BLL", "WitBird.Sex.BLL\WitBird.Sex.BLL.csproj", "{B4F323EA-DEC9-4200-90BA-09294200EAC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WitBird.Sex.Common", "WitBird.Sex.Common\WitBird.Sex.Common.csproj", "{2D93F802-9615-4957-8875-72F7736A7D26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WitBird.Sex.Web", "WitBird.Sex.Web\WitBird.Sex.Web.csproj", "{48C36C55-993D-4B57-A0DD-9452431C1E8D}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "chongqingnetdatabase", "chongqingnetdatabase\chongqingnetdatabase.sqlproj", "{ABDCE660-50BD-4815-8DE3-BDBE374BDE3B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{642BD2F6-733C-4151-AE70-1C7EF79E0036}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{642BD2F6-733C-4151-AE70-1C7EF79E0036}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{642BD2F6-733C-4151-AE70-1C7EF79E0036}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{642BD2F6-733C-4151-AE70-1C7EF79E0036}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7110DAED-3C44-42A0-B245-0B7375FBB466}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7110DAED-3C44-42A0-B245-0B7375FBB466}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7110DAED-3C44-42A0-B245-0B7375FBB466}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7110DAED-3C44-42A0-B245-0B7375FBB466}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4F323EA-DEC9-4200-90BA-09294200EAC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4F323EA-DEC9-4200-90BA-09294200EAC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4F323EA-DEC9-4200-90BA-09294200EAC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4F323EA-DEC9-4200-90BA-09294200EAC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D93F802-9615-4957-8875-72F7736A7D26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D93F802-9615-4957-8875-72F7736A7D26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D93F802-9615-4957-8875-72F7736A7D26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D93F802-9615-4957-8875-72F7736A7D26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48C36C55-993D-4B57-A0DD-9452431C1E8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48C36C55-993D-4B57-A0DD-9452431C1E8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48C36C55-993D-4B57-A0DD-9452431C1E8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48C36C55-993D-4B57-A0DD-9452431C1E8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABDCE660-50BD-4815-8DE3-BDBE374BDE3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABDCE660-50BD-4815-8DE3-BDBE374BDE3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABDCE660-50BD-4815-8DE3-BDBE374BDE3B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{ABDCE660-50BD-4815-8DE3-BDBE374BDE3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABDCE660-50BD-4815-8DE3-BDBE374BDE3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABDCE660-50BD-4815-8DE3-BDBE374BDE3B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

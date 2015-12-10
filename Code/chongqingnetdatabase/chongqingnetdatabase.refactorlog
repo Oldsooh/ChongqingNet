@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="5377592d-7357-4f2e-b3f9-93190def8fa5" ChangeDateTime="11/12/2015 13:46:19">
+    <Property Name="ElementName" Value="[dbo].[Album].[Key]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Album]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Keywords" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="44773009-7a06-4712-b79b-7f7a8d3f59ce" ChangeDateTime="12/09/2015 13:59:14">
+    <Property Name="ElementName" Value="[dbo].[Video].[Url]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Video]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UrlUrlM" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="37bf0995-2860-4aa9-86db-0d5cb613ea80" ChangeDateTime="12/09/2015 13:59:21">
+    <Property Name="ElementName" Value="[dbo].[Video].[UrlUrlM]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Video]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Url" />
+  </Operation>
+</Operations>
