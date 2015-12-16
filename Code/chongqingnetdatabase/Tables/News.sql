@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[News]
 (
-	[Id] INT NOT NULL PRIMARY KEY, 
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1, 1), 
     [CategoryId] NVARCHAR(500) NULL, 
     [Title] NVARCHAR(500) NULL, 
     [Keywords] NVARCHAR(500) NULL, 

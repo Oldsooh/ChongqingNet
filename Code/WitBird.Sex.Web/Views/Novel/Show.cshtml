@@ -1,0 +1,100 @@
+﻿@model WitBird.Sex.Web.Models.NovelModel
+@{
+    ViewBag.Title = Model.Novel.Title;
+    ViewBag.Keywords = Model.Novel.Keywords;
+    ViewBag.Description = Model.Novel.Description;
+    ViewBag.MainTitle = Model.Novel.Title + "，" + WitBird.Sex.Web.Cache.WebConfig.WebName + "小说";
+    Layout = "~/Views/Shared/LayoutPage.cshtml";
+}
+
+@section head
+{
+    <link href="@Uitlity.WebHelper.GetPCPath("/content/css/novel.css")" rel="stylesheet" type="text/css" />
+}
+
+<!--面包屑开始-->
+<div class="crumbs">
+    <a href="/" title="@WitBird.Sex.Web.Cache.WebConfig.WebName">@WitBird.Sex.Web.Cache.WebConfig.WebName</a> > 
+    <a href="javascript:void(0)" title="@Model.Novel.Category.Name">@Model.Novel.Category.Name</a> > @Model.Novel.Title
+</div>
+<!--面包屑结束-->
+
+<!--内容开始-->
+<div id="mainleft">
+    <div class="showtitle">
+        <h2>@Model.Novel.Title</h2>
+        <span style="width:250px;margin-right: 0">
+            <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+            <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        </span>
+    </div>
+    <div class="shownovel">
+        <p class="pl lightgreen">小说名称</p><p class="pr red">《@Model.Novel.Category.Name》</p>
+        <p class="pl lightgreen">所属分类</p><p class="pr red">@Model.Novel.Category.Name</p>
+        <p class="pl lightgreen">小说作者</p><p class="pr red">@Model.Novel.Author</p>
+        <p class="pl lightgreen">发布时间</p><p class="pr red">@Model.Novel.InsertTime.ToString("yyyy-MM-dd HH:mm")</p>
+        <p class="pl lightgreen">全部章节</p><p class="pr red">共 @Model.Novel.ArticleCount 章</p>
+        <p class="pl lightgreen">阅读次数</p><p class="pr red">@Model.Novel.ViewTime</p>
+    </div>
+    <div class="showcontent">
+        @(new HtmlString(Model.Novel.Description))
+        <br /><br />
+        @if (Model.NovelArticles != null && Model.NovelArticles.Count > 0)
+        {
+            int number = 0;
+            foreach (var item in Model.NovelArticles)
+            {
+                number += 1;
+                string url = "/novel/" + Model.Novel.Id.ToString() + "-" + number.ToString() + ".html";
+                <p class="artile">@number. <a href="@url">《@Model.Novel.Category.Name》 @item.Title</a> 更新时间：@item.InsertTime.ToString("yyyy-MM-dd HH:mm")</p>
+            }
+        }
+    </div>
+</div>
+<div id="mainright">
+    <div class="tags">
+        @if (!string.IsNullOrEmpty(WitBird.Sex.Web.Cache.WebConfig.Tags) && WitBird.Sex.Web.Cache.WebConfig.Tags.Contains("+"))
+        {
+            string[] tags = WitBird.Sex.Web.Cache.WebConfig.Tags.Split('+');
+            if (tags != null && tags.Count() > 0)
+            {
+                foreach (var tag in tags)
+                {
+                    if (!string.IsNullOrEmpty(tag))
+                    {
+            <a href="/search/@tag" target="_blank" title="@tag">@tag</a>
+                    }
+                }
+            }
+        }
+    </div>
+
+    <div class="break"></div>
+
+    <!--图片页右侧广告开始-->
+    <div class="ad-show-right">@(new HtmlString(WitBird.Sex.Web.Cache.GetAdvertisement(9).AdLink))</div>
+    <!--图片页右侧广告结束-->
+
+    <div class="liketitle lightgreen" id="liketitle">@Resources.Language.youlike</div>
+    <!--猜你喜欢开始-->
+    <div class="likebox" id="likediv">
+        <ul>
+
+            @if (Model.Like != null && Model.Like.Count > 0)
+            {
+                foreach (var item in Model.Like)
+                {
+                    string url = "/show/" + item.Id + ".html";
+                <li>
+                    <a href="@url" title="@item.Title">
+                        <img src="@Uitlity.WebHelper.GetImagePath(item.UrlThumbnailWidth100)" alt="@item.Title" />
+                    </a>
+                </li>
+                }
+            }
+        </ul>
+    </div>
+    <!--猜你喜欢结束-->
+</div>
+<!--内容结束-->
+<div class="break"></div>

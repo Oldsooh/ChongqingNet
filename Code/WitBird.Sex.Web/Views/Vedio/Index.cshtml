@@ -1,0 +1,87 @@
+﻿@model WitBird.Sex.Web.Models.VideoModel
+@{
+    ViewBag.Title = Model.Category.Title;
+    ViewBag.Keywords = Model.Category.Keywords;
+    ViewBag.Description = Model.Category.Description;
+    ViewBag.MainTitle = Model.Category.Title;
+    Layout = "~/Views/Shared/LayoutPage.cshtml";
+}
+@section head
+{
+    <link href="@Uitlity.WebHelper.GetPCPath("/content/css/video.css")" rel="stylesheet" type="text/css" />
+}
+
+<!--列表开始-->
+<div class="commontitle lightgreen">
+    <h2>@WitBird.Sex.Web.Cache.WebConfig.WebName@Resources.Language.video</h2>
+</div>
+<div class="videolist">
+    @if (Model.Videos != null && Model.Videos.Count > 0)
+    {
+        foreach (var item in Model.Videos)
+        {
+            string url = "/play/" + item.Id.ToString() + ".html";
+        <p class="playitem">
+            <a href="@url" title="@item.Title">
+                <img class="playpic" src="@Uitlity.WebHelper.GetImagePath(item.Thumbnail)" alt="@item.Title" /><img class="playab" src="@Uitlity.WebHelper.GetPCPath("/content/images/video/play.png")" alt="play" /></a>
+            <span>@item.Title</span>
+        </p>
+        }
+    }
+</div>
+<!--列表结束-->
+
+<div class="break"></div>
+
+
+<!--分页开始-->
+<div class="paging" style="margin: 0 auto;">
+    @if (Model.PageCount > 1)
+    {
+        for (int step = 1; step <= Model.PageCount; step = step + Model.PageStep)
+        {
+            if (Model.PageIndex >= step && Model.PageIndex < step + Model.PageStep)
+            {
+                //上一页
+                if (Model.PageIndex > 1)
+                {
+        <span><a href="/video/@(Model.PageIndex - 1)" class="prv"><</a></span>
+                }
+                //首页
+                if (Model.PageStep < Model.PageIndex)
+                {
+        <span><a href="/video/">1</a></span>
+        <span><a href="javascript:void(0)">...</a></span>
+                }
+                //分页
+                for (int i = step; i < step + Model.PageStep; i++)
+                {
+                    if (i <= Model.PageCount)
+                    {
+                        if (i == Model.PageIndex)
+                        {
+        <span><a href="/video/@i" class="no">@i</a></span>
+                        }
+                        else
+                        {
+        <span><a href="/video/@i">@i</a></span>
+                        }
+                    }
+                }
+                //末页
+                if (step + Model.PageStep <= Model.PageCount)
+                {
+        <span><a href="javascript:void(0)">...</a></span>
+        <span><a href="/video/@Model.PageCount">@Model.PageCount</a></span>
+                }
+                //下一页
+                if (Model.PageIndex < Model.PageCount)
+                {
+        <span><a href="/video/@(Model.PageIndex + 1)" class="next">></a></span>
+                }
+            }
+        }
+
+    }
+</div>
+<!--分页结束-->

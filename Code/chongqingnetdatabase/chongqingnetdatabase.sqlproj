@@ -77,4 +77,7 @@
   <ItemGroup>
     <RefactorLog Include="chongqingnetdatabase.refactorlog" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="chongqingnetdatabase.publish.xml" />
+  </ItemGroup>
 </Project>

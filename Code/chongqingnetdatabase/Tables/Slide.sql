@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Slide]
 (
-	[Id] INT NOT NULL PRIMARY KEY, 
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1, 1), 
     [Title] NVARCHAR(500) NULL, 
     [Url] NVARCHAR(500) NULL, 
     [Image] NVARCHAR(500) NULL, 
