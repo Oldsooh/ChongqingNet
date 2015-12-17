@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[NewsCategory]
 (
-	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1, 1), 
+	[Id] NVARCHAR(100) NOT NULL PRIMARY KEY, 
     [Name] NVARCHAR(500) NULL, 
     [Sort] INT NULL, 
     [Keywords] NVARCHAR(500) NULL, 

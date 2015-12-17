@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[NovelCategory]
 (
-	[Id] NVARCHAR(50) NOT NULL PRIMARY KEY, 
+	[Id] NVARCHAR(100) NOT NULL PRIMARY KEY, 
     [Name] NVARCHAR(500) NULL, 
     [Sort] INT NULL, 
     [Keywords] NVARCHAR(500) NULL, 
