@@ -705,102 +705,102 @@ namespace WitBird.Sex.BLL
             return detail;
         }
 
-        public HomeData GetHomeData()
-        {
-            HomeData homeData = new HomeData();
-            var conn = DBRepository.GetSqlConnection();
+//        public HomeData GetHomeData()
+//        {
+//            HomeData homeData = new HomeData();
+//            var conn = DBRepository.GetSqlConnection();
 
-            try
-            {
-                StringBuilder sqlBuilder = new StringBuilder();
-                //Slides
-                sqlBuilder.Append("select top 10 * from Slide order by id desc; ");
-                //New upload
-                sqlBuilder.Append("select top 10 * from Album where IsDelete=0 and IsShow=1 order by InsertTime desc; ");
-                //Recomended
-                //sqlBuilder.Append("select top 6 * from Album where IsTop=1 and IsShow = 1 and IsDelete = 0 order by id desc; ");
-                // Top women per week
-//                sqlBuilder.Append(@"
-//                    select top 6 * from Album 
-//                    where 
-//                    (CategoryId = 'Costume' OR CategoryId = 'pure' OR CategoryId = 'sexy' OR CategoryId = 'star') 
-//                    AND IsDelete=0 
-//                    and IsShow=1 
-//                    and (convert(date,UpdatedTime) between convert(date,dateadd(dd,-7,getdate())) and convert(date,getdate())) 
-//                    order by ViewTime desc;");
+//            try
+//            {
+//                StringBuilder sqlBuilder = new StringBuilder();
+//                //Slides
+//                sqlBuilder.Append("select top 10 * from Slide order by id desc; ");
+//                //New upload
+//                sqlBuilder.Append("select top 10 * from Album where IsDelete=0 and IsShow=1 order by InsertTime desc; ");
+//                //Recomended
+//                //sqlBuilder.Append("select top 6 * from Album where IsTop=1 and IsShow = 1 and IsDelete = 0 order by id desc; ");
+//                // Top women per week
+////                sqlBuilder.Append(@"
+////                    select top 6 * from Album 
+////                    where 
+////                    (CategoryId = 'Costume' OR CategoryId = 'pure' OR CategoryId = 'sexy' OR CategoryId = 'star') 
+////                    AND IsDelete=0 
+////                    and IsShow=1 
+////                    and (convert(date,UpdatedTime) between convert(date,dateadd(dd,-7,getdate())) and convert(date,getdate())) 
+////                    order by ViewTime desc;");
+////                // Top men per week
+////                sqlBuilder.Append(@"
+////                    select top 6 * from Album 
+////                    where 
+////                    CategoryId = 'StylishMan'
+////                    AND IsDelete=0 
+////                    and IsShow=1 
+////                    and (convert(date,UpdatedTime) between convert(date,dateadd(dd,-7,getdate())) and convert(date,getdate())) 
+//                //                    order by ViewTime desc;");
+//                //Sexy
+//                sqlBuilder.Append("select top 12 * from Album where CategoryId = 'damimi' and IsDelete=0 and IsShow = 1 and Id not in (select top 10 Id from Album order by Id desc) order by id desc;");
+//                //Pure
+//                sqlBuilder.Append("select top 12 * from Album where CategoryId = 'dapigu' and IsDelete=0 and IsShow = 1 and Id not in (select top 10 Id from Album order by Id desc) order by id desc;");
+//                //Star
+//                sqlBuilder.Append("select top 12 * from Album where CategoryId = 'nenmeimei' and IsDelete=0 and IsShow = 1 and Id not in (select top 10 Id from Album order by Id desc) order by id desc;");
+//                //Costume
+//                //sqlBuilder.Append("select top 6 * from Album where CategoryId = 'Costume' and IsDelete=0 and IsShow = 1 order by id desc;");
+//                //stylish man
+//                //sqlBuilder.Append("select top 6 * from Album where CategoryId = 'StylishMan' and IsDelete=0 and IsShow = 1 order by id desc;");
+
+//                conn.Open();
+//                SqlCommand cmd = new SqlCommand(sqlBuilder.ToString(), conn);
+//                SqlDataReader reader = cmd.ExecuteReader();
+
+//                List<Album> albums = null;
+//                //Slides
+//                GetHomeSlides(ref homeData, reader);
+//                //New upload
+//                GetHomeAlbums(out albums, reader);
+//                homeData.NewUploads = albums;
+//                //Recomended
+//                //homeData.RecommendPictures = albums;
+//                // Top women per week
+//                //GetHomeAlbums(out albums, reader);
+//                //homeData.TopWomen = albums;
 //                // Top men per week
-//                sqlBuilder.Append(@"
-//                    select top 6 * from Album 
-//                    where 
-//                    CategoryId = 'StylishMan'
-//                    AND IsDelete=0 
-//                    and IsShow=1 
-//                    and (convert(date,UpdatedTime) between convert(date,dateadd(dd,-7,getdate())) and convert(date,getdate())) 
-                //                    order by ViewTime desc;");
-                //Sexy
-                sqlBuilder.Append("select top 12 * from Album where CategoryId = 'damimi' and IsDelete=0 and IsShow = 1 and Id not in (select top 10 Id from Album order by Id desc) order by id desc;");
-                //Pure
-                sqlBuilder.Append("select top 12 * from Album where CategoryId = 'dapigu' and IsDelete=0 and IsShow = 1 and Id not in (select top 10 Id from Album order by Id desc) order by id desc;");
-                //Star
-                sqlBuilder.Append("select top 12 * from Album where CategoryId = 'nenmeimei' and IsDelete=0 and IsShow = 1 and Id not in (select top 10 Id from Album order by Id desc) order by id desc;");
-                //Costume
-                //sqlBuilder.Append("select top 6 * from Album where CategoryId = 'Costume' and IsDelete=0 and IsShow = 1 order by id desc;");
-                //stylish man
-                //sqlBuilder.Append("select top 6 * from Album where CategoryId = 'StylishMan' and IsDelete=0 and IsShow = 1 order by id desc;");
+//                //GetHomeAlbums(out albums, reader);
+//                //homeData.TopMen = albums;
+//                //Sexy
+//                GetHomeAlbums(out albums, reader);
+//                homeData.RecommendDamimi = albums;
+//                //dPure
+//                GetHomeAlbums(out albums, reader);
+//                homeData.RecommendDapigu = albums;
+//                // Star
+//                GetHomeAlbums(out albums, reader);
+//                homeData.RecommendNenmeimei = albums;
+//                // Costume
+//                //GetHomeAlbums(out albums, reader);
+//                //homeData.RecommendCostume = albums;
+//                // stylish man
+//                //GetHomeAlbums(out albums, reader);
+//                //homeData.RecommendStylishMan = albums;
 
-                conn.Open();
-                SqlCommand cmd = new SqlCommand(sqlBuilder.ToString(), conn);
-                SqlDataReader reader = cmd.ExecuteReader();
+//                if (!reader.IsClosed)
+//                {
+//                    reader.Close();
+//                }
+//            }
+//            catch (Exception e)
+//            {
+//                LogService.Log("获取首页数据抛异常啦", e.ToString());
+//            }
+//            finally
+//            {
+//                if (conn.State != System.Data.ConnectionState.Closed)
+//                {
+//                    conn.Close();
+//                }
+//            }
 
-                List<Album> albums = null;
-                //Slides
-                GetHomeSlides(ref homeData, reader);
-                //New upload
-                GetHomeAlbums(out albums, reader);
-                homeData.NewUploads = albums;
-                //Recomended
-                //homeData.RecommendPictures = albums;
-                // Top women per week
-                //GetHomeAlbums(out albums, reader);
-                //homeData.TopWomen = albums;
-                // Top men per week
-                //GetHomeAlbums(out albums, reader);
-                //homeData.TopMen = albums;
-                //Sexy
-                GetHomeAlbums(out albums, reader);
-                homeData.RecommendDamimi = albums;
-                //dPure
-                GetHomeAlbums(out albums, reader);
-                homeData.RecommendDapigu = albums;
-                // Star
-                GetHomeAlbums(out albums, reader);
-                homeData.RecommendNenmeimei = albums;
-                // Costume
-                //GetHomeAlbums(out albums, reader);
-                //homeData.RecommendCostume = albums;
-                // stylish man
-                //GetHomeAlbums(out albums, reader);
-                //homeData.RecommendStylishMan = albums;
-
-                if (!reader.IsClosed)
-                {
-                    reader.Close();
-                }
-            }
-            catch (Exception e)
-            {
-                LogService.Log("获取首页数据抛异常啦", e.ToString());
-            }
-            finally
-            {
-                if (conn.State != System.Data.ConnectionState.Closed)
-                {
-                    conn.Close();
-                }
-            }
-
-            return homeData;
-        }
+//            return homeData;
+//        }
 
         private static void GetHomeSlides(ref HomeData homeData, SqlDataReader reader)
         {

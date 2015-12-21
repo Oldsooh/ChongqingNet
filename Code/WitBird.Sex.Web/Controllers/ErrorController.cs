@@ -16,10 +16,10 @@ namespace WitBird.Sex.Web.Controllers
         {
             this.Internationalization();
             WitBird.Sex.BLL.NewsService newsService = new BLL.NewsService();
-            WitBird.Sex.BLL.AlbumService albumService = new BLL.AlbumService();
+            //WitBird.Sex.BLL.AlbumService albumService = new BLL.AlbumService();
             SearchModel model = new SearchModel();
             model.NewsResult = newsService.GetHotNews();
-            model.AlbumResult = albumService.GetRecommendRandom(12);
+            //model.AlbumResult = albumService.GetRecommendRandom(12);
             Response.StatusCode = 404;
             return View(model);
         }

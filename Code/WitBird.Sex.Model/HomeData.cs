@@ -19,7 +19,7 @@ namespace WitBird.Sex.Model
         /// <summary>
         /// 最新上传
         /// </summary>
-        public List<Album> NewUploads { get; set; }
+        //public List<Album> NewUploads { get; set; }
         /// <summary>
         /// 推荐资讯
         /// </summary>
@@ -27,34 +27,34 @@ namespace WitBird.Sex.Model
         /// <summary>
         /// 最新推荐
         /// </summary>
-        public List<Album> RecommendPictures { get; set; }
+        //public List<Album> RecommendPictures { get; set; }
         /// <summary>
         /// 今日最美
         /// </summary>
-        public List<Album> TopWomen { get; set; }
+        //public List<Album> TopWomen { get; set; }
         /// <summary>
         /// 今日最帅
         /// </summary>
-        public List<Album> TopMen { get; set; }
+        //public List<Album> TopMen { get; set; }
         /// <summary>
         /// 推荐青纯
         /// </summary>
-        public List<Album> RecommendDapigu { get; set; }
+        //public List<Album> RecommendDapigu { get; set; }
         /// <summary>
         /// 推荐性感
         /// </summary>
-        public List<Album> RecommendDamimi { get; set; }
+        //public List<Album> RecommendDamimi { get; set; }
         /// <summary>
         /// 推荐明星
         /// </summary>
-        public List<Album> RecommendNenmeimei { get; set; }
+        //public List<Album> RecommendNenmeimei { get; set; }
         /// <summary>
         /// 推荐古装
         /// </summary>
-        public List<Album> RecommendCostume { get; set; }
+        //public List<Album> RecommendCostume { get; set; }
         /// <summary>
         /// 推荐型男
         /// </summary>
-        public List<Album> RecommendStylishMan { get; set; }
+        //public List<Album> RecommendStylishMan { get; set; }
     }
 }

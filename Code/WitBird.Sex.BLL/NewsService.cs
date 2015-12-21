@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -870,6 +871,79 @@ namespace WitBird.Sex.BLL
                 conn.Close();
             }
             return result;
+        }
+
+        public HomeData GetHomeData()
+        {
+            HomeData homeData = new HomeData();
+            var conn = DBRepository.GetSqlConnection();
+
+            try
+            {
+                StringBuilder sqlBuilder = new StringBuilder();
+                //Slides
+                sqlBuilder.Append("select top 10 * from Slide order by id desc; ");
+
+                //new upload news top 10
+                sqlBuilder.Append("select top 10 * from News where IsActive = 1 order by Id desc; ");
+
+                // top 12 for each news category
+                var newsCategories = (GetNewsCategories() ?? new List<Model.NewsCategory>()).Select(x => x.Id);
+
+                foreach (var cate in newsCategories)
+                {
+                    sqlBuilder.Append("select top 12 * from News where IsActive = 1 and CategoryId = '" + cate + "' ";
+                    sqlBuilder.Append(" and (convert(date,UpdateTime) between convert(date,dateadd(dd,-7,getdate())) and convert(date,getdate())) ");
+                    sqlBuilder.Append(" and Id not in (select top 10 Id from News where IsActive = 1 order by Id desc; )");
+                    sqlBuilder.Append(" order by ViewCount desc;");
+                }
+
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sqlBuilder.ToString(), conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                // slides
+                GetHomeSlides(ref homeData, reader);
+
+                //new upload news top 10
+                reader.NextResult();
+
+                if (!reader.IsClosed)
+                {
+                    reader.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                LogService.Log("获取首页数据抛异常啦", e.ToString());
+            }
+            finally
+            {
+                if (conn.State != System.Data.ConnectionState.Closed)
+                {
+                    conn.Close();
+                }
+            }
+
+            return homeData;
+        }
+
+        private static void GetHomeSlides(ref HomeData homeData, SqlDataReader reader)
+        {
+            homeData.Slides = new List<Slide>();
+            while (reader.Read())
+            {
+                Slide slide = new Slide
+                {
+                    Id = reader[0] != DBNull.Value ? reader.GetInt32(0) : 0,
+                    Title = reader[0] != DBNull.Value ? reader.GetString(1) : string.Empty,
+                    Url = reader[0] != DBNull.Value ? reader.GetString(2) : string.Empty,
+                    Image = reader[0] != DBNull.Value ? reader.GetString(3) : string.Empty,
+                    InsertTime = reader[0] != DBNull.Value ? reader.GetDateTime(4) : DateTime.Now
+                };
+
+                homeData.Slides.Add(slide);
+            }
         }
     }
 }

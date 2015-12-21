@@ -15,9 +15,9 @@ namespace WitBird.Sex.Web
         private static List<FriendlyLink> friendlyLinks;
         private static List<Advertisement> advertisements;
         private static List<NewsCategory>  newsCategories;
-        private static List<NovelCategory> novelCategories;
-        private static List<Category> categories;
-        private static HomeModel homeData;
+        //private static List<NovelCategory> novelCategories;
+        //private static List<Category> categories;
+        private static HomeModel homeModel;
 
         /// <summary>
         ///配置信息
@@ -117,7 +117,7 @@ namespace WitBird.Sex.Web
                 {
                     UpdateNewsCategories();
                 }
-                return newsCategories;
+                return newsCategories ?? new List<NewsCategory>();
             }
         }
         public static void UpdateNewsCategories()
@@ -126,45 +126,45 @@ namespace WitBird.Sex.Web
             newsCategories = newsService.GetNewsCategories();
         }
 
-        public static List<Category> Categories
-        {
-            get
-            {
-                if (categories == null)
-                {
-                    UpdateCategories();
-                }
-                return categories;
-            }
-        }
-        public static void UpdateCategories()
-        {
-            CategoryService service = new CategoryService();
-            categories = service.GetCategories(string.Empty);
-        }
+        //public static List<Category> Categories
+        //{
+        //    get
+        //    {
+        //        if (categories == null)
+        //        {
+        //            UpdateCategories();
+        //        }
+        //        return categories;
+        //    }
+        //}
+        //public static void UpdateCategories()
+        //{
+        //    CategoryService service = new CategoryService();
+        //    categories = service.GetCategories(string.Empty);
+        //}
 
-        public static List<NovelCategory> NovelCategories
-        {
-            get
-            {
-                if (novelCategories == null)
-                {
-                    UpdateNovelCategories();
-                }
-                return novelCategories;
-            }
-        }
-        public static void UpdateNovelCategories()
-        {
-            NovelService novelCategoriesService = new NovelService();
-            novelCategories = novelCategoriesService.GetNovelCategories();
-        }
+        //public static List<NovelCategory> NovelCategories
+        //{
+        //    get
+        //    {
+        //        if (novelCategories == null)
+        //        {
+        //            UpdateNovelCategories();
+        //        }
+        //        return novelCategories;
+        //    }
+        //}
+        //public static void UpdateNovelCategories()
+        //{
+        //    NovelService novelCategoriesService = new NovelService();
+        //    novelCategories = novelCategoriesService.GetNovelCategories();
+        //}
 
         public static HomeModel HomeData
         {
             get
             {
-                if (homeData == null)
+                if (homeModel == null)
                 {
                     UpdateHomeData();
                 }
@@ -175,7 +175,7 @@ namespace WitBird.Sex.Web
                         UpdateHomeData();//首页异步读取最新数据
                     });
                 }
-                return homeData;
+                return homeModel;
             }
         }
 
@@ -190,19 +190,21 @@ namespace WitBird.Sex.Web
                 AlbumService albumService = new AlbumService();
                 HomeData data = albumService.GetHomeData();
 
-                homeData = new HomeModel();
+                homeModel = new HomeModel();
                 if (data != null)
                 {
-                    homeData.Slides = data.Slides;
-                    homeData.NewUploads = data.NewUploads;
-                    homeData.RecommendPictures = data.RecommendPictures;
+                    homeModel.Slides = data.Slides;
+                    homeModel.NewNews = data.NewNews;
+                    homeModel.RecommendNews = data.RecommendNews;
+                    //homeData.NewUploads = data.NewUploads;
+                    //homeData.RecommendPictures = data.RecommendPictures;
                     //homeData.TopWomen = data.TopWomen;
                     //homeData.TopMen = data.TopMen;
-                    homeData.RecommendDapigu = data.RecommendDapigu;
-                    homeData.RecommendDamimi = data.RecommendDamimi;
-                    homeData.RecommendNenmeimei = data.RecommendNenmeimei;
-                    homeData.RecommendCostume = data.RecommendCostume;
-                    homeData.RecommendStylishMan = data.RecommendStylishMan;
+                    //homeData.RecommendDapigu = data.RecommendDapigu;
+                    //homeData.RecommendDamimi = data.RecommendDamimi;
+                    //homeData.RecommendNenmeimei = data.RecommendNenmeimei;
+                    //homeData.RecommendCostume = data.RecommendCostume;
+                    //homeData.RecommendStylishMan = data.RecommendStylishMan;
                 }
             }
         }

@@ -28,10 +28,26 @@ namespace WitBird.Sex.Model
         /// </summary>
         public string Keywords { get; set; }
 
+        private string description;
         /// <summary>
-        /// 描述
+        /// 描述,最多返回100个字节内容
         /// </summary>
-        public string Description { get; set; }
+        public string Description 
+        {
+            get 
+            {
+                if (!string.IsNullOrEmpty(description) && description.Length > 100)
+                {
+                    return description.Substring(0, 100);
+                }
+
+                return description;
+            } 
+            set
+            {
+                description = value;
+            }
+        }
 
         /// <summary>
         /// 封面

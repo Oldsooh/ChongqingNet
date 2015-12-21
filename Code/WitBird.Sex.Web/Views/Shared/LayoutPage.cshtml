@@ -40,9 +40,9 @@
                     <ul class="nav navbar-nav">
                         <li id="home"><a href='@Uitlity.WebHelper.GetPCPath("/")' title="首页">首页</a></li>
 
-                        @if (WitBird.Sex.Web.Cache.Categories != null)
+                        @if (WitBird.Sex.Web.Cache.NewsCategories != null)
                         {
-                            foreach (var item in WitBird.Sex.Web.Cache.Categories)
+                            foreach (var item in WitBird.Sex.Web.Cache.NewsCategories)
                             {
                             <li id="@item.Id"><a href='@Uitlity.WebHelper.GetPCPath("/" + item.Id + "/")' title="@item.Name">@item.Name</a></li>
                             }
@@ -70,18 +70,14 @@
             <div class="row">
                 <div class="col-md-12">
                     <p>
-                        Copyright &copy; 2013-2015 DESIGNED BY WitBird &nbsp;&nbsp;
+                        Copyright &copy; 2013-2015 DESIGNED BY ChongqingNet.com &nbsp;&nbsp;
                         [@WitBird.Sex.Web.Cache.WebConfig.WebName] &nbsp;&nbsp;
                         @WitBird.Sex.Web.Cache.WebConfig.ICP &nbsp;&nbsp;
-                        网站源码分享&nbsp;&nbsp;联系邮箱：
-
-                        @WitBird.Sex.Web.Cache.WebConfig.Email&nbsp;&nbsp;
+                        联系邮箱： @WitBird.Sex.Web.Cache.WebConfig.Email&nbsp;&nbsp;
                         QQ交流：@WitBird.Sex.Web.Cache.WebConfig.QQ
                     </p>
                     <p>
-                        免责声明：本站图片来源于公开访问的网络图片，如果有侵权行为，请立即
-
-                        联系我们删除，在此先表示抱歉.
+                        免责声明：本站所有内容均来自国外博客、论坛等公开发布的文章，旨在为国内技术人员提供免费的技术文档翻译服务，不用做任何商业用途。请勿随意转载。
                     </p>
                 </div>
             </div>

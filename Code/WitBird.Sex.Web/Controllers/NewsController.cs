@@ -19,16 +19,14 @@ namespace WitBird.Sex.Web.Controllers
 
             NewsModel model = new NewsModel();
 
-            if (string.IsNullOrEmpty(page))
-            {
-                page = "1";
-            }
+            int pageIndex = 1;
+            Int32.TryParse(page, out pageIndex);
 
             NewsService newsService = new NewsService();
-            model.Page = Int32.Parse(page);
+            model.Page = pageIndex;
 
             model.PageSize = 10;//每页显示10张
-            model.PageIndex = Int32.Parse(page);
+            model.PageIndex = pageIndex;
             int count = 0;
             //新闻列表
             if (string.Equals(category, "news", StringComparison.CurrentCultureIgnoreCase))
@@ -90,13 +88,13 @@ namespace WitBird.Sex.Web.Controllers
             if (model.News == null)
             {
                 model.News = new Model.News();
-                model.News.Title = "该新闻不存在或已被删除";
+                model.News.Title = "404 Not Found";
             }
             else
             {
-                AlbumService albumService = new AlbumService();
-                int outCount = 0;
-                model.RelatedAlbum = albumService.GetAlbumList(string.Empty, model.News.Keywords, 5, 1, out outCount);
+                //AlbumService albumService = new AlbumService();
+                //int outCount = 0;
+                //model.RelatedAlbum = albumService.GetAlbumList(string.Empty, model.News.Keywords, 5, 1, out outCount);
                 model.RelatedNews = newsService.GetRelatedNews(model.News.Id);
                 model.LastNews = newsService.GetPrvNewsById(model.News.Id);
                 model.NextNews = newsService.GetNextNewsById(model.News.Id);

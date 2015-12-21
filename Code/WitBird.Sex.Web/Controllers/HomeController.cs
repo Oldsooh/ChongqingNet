@@ -15,7 +15,7 @@ namespace WitBird.Sex.Web.Controllers
 
         public ActionResult Index()
         {
-            this.Internationalization();
+            //this.Internationalization();
 
             //HomeModel model = Cache.HomeData; //此model仅使用 IsForeignLanguages 一个参数
 

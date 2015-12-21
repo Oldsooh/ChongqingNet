@@ -9,13 +9,20 @@
 @section head
 {
 }
+<!-- 面包屑 -->
+<ol class="breadcrumb hidden-xs">
+    <li>当前位置</li>
+    <li><a href="@Uitlity.WebHelper.GetPCPath("/")" title="返回首页">首页</a></li>
+    <li class="active"><a href="@Uitlity.WebHelper.GetPCPath("/search/"+ @Model.Keywords + "/")" title="搜索: @Model.Keywords">搜索: @Model.Keywords</a> </li>
+    <li>第@(Model.PageIndex)页</li>
+</ol>
 
 @if (Model.NewsResult != null && Model.NewsResult.Count > 0)
 {
     <div class="row">
         <div class="col-md-12">
             <div class="fl-tit clearfix">
-                <h2 class="fl"><i class="glyphicon glyphicon-file"></i>&nbsp; 资讯里包含了@(Model.TotalNewsCount)个"@Model.Keywords"相关的结果</h2>
+                <h2 class="fl"><i class="glyphicon glyphicon-file"></i>&nbsp; 共@(Model.TotalNewsCount)个"@Model.Keywords"相关的结果</h2>
             </div>
         </div>
     </div>
@@ -53,7 +60,7 @@
     </div>
 }
 
-@if (Model.AlbumResult != null && Model.AlbumResult.Count > 0)
+@*@if (Model.AlbumResult != null && Model.AlbumResult.Count > 0)
 {
     <div class="row">
         <div class="col-md-12">
@@ -117,7 +124,7 @@
             }
         }
     </div>
-}
+}*@
 
 @if (Model.PageCount > 1)
 {
@@ -131,7 +138,7 @@
                     //首页
                     if (Model.PageStep < Model.PageIndex)
                     {
-            <a class="btn btn-default" href="@Uitlity.WebHelper.GetPCPath("/search/1/")" title="@(Model.Keywords)的搜索结果第1页">首页</a>
+            <a class="btn btn-default" href="@Uitlity.WebHelper.GetPCPath("/search/" + Model.Keywords + "/1/"))" title="@(Model.Keywords)的搜索结果第1页">首页</a>
                     }
                     //上一页
                     if (Model.PageIndex > 1)
@@ -145,7 +152,7 @@
                         {
                             if (i == Model.PageIndex)
                             {
-            <span class="btn btn-danger" title="当前第@(i)页">@i</span>
+                                <span class="btn btn-danger" title="@(Model.Keywords)的搜索结果第@(i)页">@i</span>
                             }
                             else
                             {
